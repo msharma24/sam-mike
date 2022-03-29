@@ -6,7 +6,7 @@ module "vpc" {
   version = "3.0.0"
 
 
-  name = "${var.environment}vpc"
+  name = "${var.environment}-sam-mike-vpc"
   cidr = var.vpc_cidr
 
   azs              = ["${var.region}a", "${var.region}b"]
