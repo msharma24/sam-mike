@@ -92,19 +92,15 @@ module "rds" {
   }
 
   # DB subnet group
-  subnet_ids = [
-    "subnet-000a409b4af5406d1",
-    "subnet-0989a08f5741210b3",
-    "subnet-0f5cc2d907038927b"
-  ]
+  subnet_ids = module.vpc.database_subnets
 
   # DB parameter group
-  family = "mysql5.7"
+  family = "mysql8.0"
 
   skip_final_snapshot = true
 
   # DB option group
-  major_engine_version = "5.7"
+  major_engine_version = "8.0"
 
   # Database Deletion Protection
   deletion_protection = false
