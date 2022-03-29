@@ -191,12 +191,4 @@ resource "aws_ssm_parameter" "ssm_parameter" {
 
 ################################################################################
 
-resource "random_password" "mysql_master_password" {
-  length           = 24
-  special          = true
-  min_upper        = 1
-  min_lower        = 1
-  min_numeric      = 1
-  override_special = "$"
-}
 
