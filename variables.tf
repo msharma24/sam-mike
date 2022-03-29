@@ -91,3 +91,7 @@ variable "aurora_backup_window" {
   default     = "15:00-17:00"
   type        = string
 }
+
+variable "snapshot_identifier" {
+
+}
