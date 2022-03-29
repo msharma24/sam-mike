@@ -62,7 +62,7 @@ module "mysql_security_group" {
 
 module "rds" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "~> 3.0"
+  version = "3.4.0"
 
   identifier = "sam-db"
 
