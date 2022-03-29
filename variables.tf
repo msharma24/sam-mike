@@ -45,7 +45,7 @@ variable "database_subnet_cidr_list" {
 
 variable "db_name" {
   description = "Required. Name of the RDS database instance"
-  type        = string
+  default     = null
 }
 
 variable "aurora_engine_version" {
