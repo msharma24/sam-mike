@@ -5,13 +5,14 @@ module "vpc_ec2_instance" {
   name = "${var.environment}/vpc_instance"
   # instance_count = 1
 
-  ami                    = data.aws_ami.amazon_linux_2.id
-  instance_type          = "t3.xlarge"
-  monitoring             = true
-  vpc_security_group_ids = [module.vpc.default_security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
-  key_name               = "koptest"
-  user_data              = <<EOF
+  ami                         = data.aws_ami.amazon_linux_2.id
+  instance_type               = "t3.xlarge"
+  monitoring                  = true
+  vpc_security_group_ids      = [module.vpc.default_security_group_id]
+  subnet_id                   = module.vpc.public_subnets[0]
+  associate_public_ip_address = true
+  key_name                    = "koptest"
+  user_data                   = <<EOF
   #!/bin/bash
   echo "Hello"
   EOF
