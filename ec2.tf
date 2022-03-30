@@ -10,7 +10,6 @@ module "vpc_ec2_instance" {
   monitoring             = true
   vpc_security_group_ids = [module.vpc.default_security_group_id]
   subnet_id              = module.vpc.public_subnets[0]
-  iam_instance_profile   = module.spoke_instance_iam_assumable_role.iam_instance_profile_id
   key_name               = "koptest"
   user_data              = <<EOF
   #!/bin/bash
