@@ -134,3 +134,35 @@ resource "aws_ssm_parameter" "ssm_parameter" {
 ################################################################################
 
 
+################################################################################
+# VPC Module Spoke VPC A - SSM Endpoint
+################################################################################
+module "vpc_ssm_endpoint" {
+
+  source = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
+  vpc_id = module.vpc.vpc_id
+
+  security_group_ids = [module.vpc.default_security_group_id]
+  endpoints = {
+    s3 = {
+      service    = "s3"
+      subnet_ids = module.vpc.private_subnets
+      tags       = { Name = "spoke-vpc-a-s3-vpc-endpoint" }
+    },
+    ssm = {
+      service             = "ssm"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+    },
+    ssmmessages = {
+      service             = "ssmmessages"
+      private_dns_enabled = true,
+      subnet_ids          = module.vpc.private_subnets
+    },
+    ec2messages = {
+      service             = "ec2messages",
+      private_dns_enabled = true,
+      subnet_ids          = module.vpc.private_subnets
+    }
+  }
+}
